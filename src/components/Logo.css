@@ -1,0 +1,68 @@
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+  line-height: 1;
+}
+
+.logo__mark {
+  width: 44px;
+  height: 44px;
+  color: var(--gold);
+  flex-shrink: 0;
+  transition: transform 0.8s var(--ease-out);
+}
+
+.logo:hover .logo__mark {
+  transform: rotate(-8deg);
+}
+
+.logo__text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.logo__name {
+  font-family: var(--font-serif);
+  font-size: 1.55rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+}
+
+.logo__descriptor {
+  font-family: var(--font-sans);
+  font-size: 0.56rem;
+  font-weight: 500;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  opacity: 0.75;
+}
+
+.logo--dark {
+  color: var(--charcoal);
+}
+
+.logo--dark .logo__mark {
+  color: var(--gold-deep);
+}
+
+.logo--light {
+  color: var(--ivory);
+}
+
+@media (max-width: 380px) {
+  .logo__mark {
+    width: 38px;
+    height: 38px;
+  }
+
+  .logo__name {
+    font-size: 1.35rem;
+  }
+
+  .logo__descriptor {
+    font-size: 0.5rem;
+    letter-spacing: 0.24em;
+  }
+}

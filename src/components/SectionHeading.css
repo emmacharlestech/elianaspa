@@ -1,0 +1,41 @@
+.section-heading {
+  max-width: 46rem;
+  margin-bottom: clamp(2.75rem, 5vw, 4.5rem);
+}
+
+.section-heading__title {
+  font-size: var(--fs-2xl);
+}
+
+.section-heading__title em {
+  color: var(--gold-deep);
+}
+
+.section--dark .section-heading__title em {
+  color: var(--gold-light);
+}
+
+.section-heading__intro {
+  margin-top: 1.4rem;
+}
+
+.section-heading--center {
+  margin-inline: auto;
+  text-align: center;
+}
+
+.section-heading--center .eyebrow {
+  justify-content: center;
+}
+
+.section-heading--center .eyebrow::after {
+  content: '';
+  width: 2.5rem;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.7;
+}
+
+.section-heading--center .section-heading__intro {
+  margin-inline: auto;
+}

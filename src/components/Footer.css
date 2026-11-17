@@ -1,0 +1,148 @@
+.footer {
+  background: var(--charcoal);
+  color: var(--muted-light);
+  padding-top: clamp(4rem, 8vw, 6.5rem);
+  padding-bottom: calc(2rem + env(safe-area-inset-bottom));
+}
+
+.footer__cta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 2rem;
+  padding-bottom: clamp(3rem, 6vw, 4.5rem);
+  border-bottom: 1px solid var(--line-light);
+}
+
+.footer__cta-title {
+  margin: 0;
+  max-width: 40rem;
+  font-family: var(--font-serif);
+  font-size: var(--fs-2xl);
+  line-height: 1.05;
+  color: var(--ivory);
+}
+
+.footer__cta-title em {
+  color: var(--gold-light);
+}
+
+.footer__grid {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr 1fr 1.2fr;
+  gap: 2.5rem;
+  padding-block: clamp(3rem, 6vw, 4.5rem);
+}
+
+.footer__brand p {
+  margin-top: 1.4rem;
+  max-width: 22rem;
+}
+
+.footer__addr {
+  display: flex;
+  gap: 0.6rem;
+  font-size: var(--fs-sm);
+}
+
+.footer__addr svg {
+  width: 1.05rem;
+  height: 1.05rem;
+  flex-shrink: 0;
+  margin-top: 0.3rem;
+  color: var(--gold);
+}
+
+.footer__heading {
+  font-family: var(--font-sans);
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1.25rem;
+}
+
+.footer__list li + li {
+  margin-top: 0.55rem;
+}
+
+.footer__list a {
+  font-size: 0.95rem;
+  transition: color 0.3s;
+}
+
+.footer__list a:hover {
+  color: var(--ivory);
+}
+
+.footer__text {
+  font-size: 0.95rem;
+}
+
+.footer__wa {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  min-height: 44px;
+  color: var(--ivory);
+  border-bottom: 1px solid var(--gold);
+  font-size: 0.95rem;
+}
+
+.footer__wa svg {
+  width: 1.15rem;
+  height: 1.15rem;
+  color: var(--gold);
+}
+
+.footer__bottom {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.75rem 2rem;
+  padding-top: 1.75rem;
+  border-top: 1px solid var(--line-light);
+  font-size: 0.8rem;
+}
+
+.footer__bottom p {
+  margin: 0;
+}
+
+.footer__top {
+  color: var(--ivory);
+  letter-spacing: 0.1em;
+}
+
+.footer__top:hover {
+  color: var(--gold-light);
+}
+
+@media (max-width: 960px) {
+  .footer__grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .footer__brand {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 520px) {
+  .footer__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .footer__cta .btn {
+    width: 100%;
+  }
+
+  .footer__bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    padding-bottom: 4.5rem; /* room for floating WhatsApp button */
+  }
+}

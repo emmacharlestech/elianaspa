@@ -1,0 +1,50 @@
+.smart-img {
+  position: relative;
+  overflow: hidden;
+  background:
+    linear-gradient(110deg, rgba(255, 255, 255, 0) 30%, rgba(255, 255, 255, 0.35) 50%, rgba(255, 255, 255, 0) 70%) var(--nude);
+  background-size: 250% 100%;
+  animation: img-shimmer 1.8s linear infinite;
+}
+
+.smart-img.is-loaded {
+  animation: none;
+  background: var(--nude);
+}
+
+.smart-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition:
+    opacity 0.9s var(--ease),
+    transform 1.2s var(--ease-out);
+}
+
+.smart-img.is-loaded img {
+  opacity: 1;
+}
+
+.smart-img--fallback {
+  display: grid;
+  place-items: center;
+  animation: none;
+  background: linear-gradient(145deg, var(--cream), var(--nude));
+}
+
+.smart-img__mono {
+  width: 34%;
+  max-width: 120px;
+  color: var(--gold-deep);
+  opacity: 0.55;
+}
+
+@keyframes img-shimmer {
+  from {
+    background-position: 125% 0;
+  }
+  to {
+    background-position: -125% 0;
+  }
+}

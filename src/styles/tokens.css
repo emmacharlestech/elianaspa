@@ -1,0 +1,64 @@
+/* ==========================================================
+   Design tokens — Eliana's Cosmetics & Aesthetics
+   ========================================================== */
+:root {
+  /* Palette */
+  --ivory: #fbf7f0;
+  --cream: #f4ece0;
+  --nude: #ead8c8;
+  --nude-deep: #d8bca6;
+  --gold: #c9a96e;          /* champagne gold */
+  --gold-light: #e6cf9f;
+  --gold-deep: #8a6a33;     /* AA-contrast gold for small text on light bg */
+  --charcoal: #1f1c1a;
+  --charcoal-2: #2a2623;
+  --charcoal-3: #3a3430;
+  --ink: #2e2926;
+  --muted: #6f645c;
+  --muted-light: #b9aea4;
+  --line: rgba(31, 28, 26, 0.12);
+  --line-light: rgba(251, 247, 240, 0.16);
+  --whatsapp: #25d366;
+  --danger: #a3402f;
+  --success: #3f6b4a;
+
+  --gold-gradient: linear-gradient(120deg, #b8945a 0%, #e6cf9f 38%, #c9a96e 62%, #f1dfb8 100%);
+
+  /* Type */
+  --font-serif: 'Cormorant Garamond', 'Cormorant', Georgia, 'Times New Roman', serif;
+  --font-sans: 'Jost', 'Helvetica Neue', Arial, system-ui, sans-serif;
+
+  --fs-xs: 0.75rem;
+  --fs-sm: 0.875rem;
+  --fs-base: 1rem;
+  --fs-md: 1.125rem;
+  --fs-lg: clamp(1.25rem, 1.1rem + 0.6vw, 1.5rem);
+  --fs-xl: clamp(1.6rem, 1.3rem + 1.2vw, 2.25rem);
+  --fs-2xl: clamp(2.3rem, 1.6rem + 2.8vw, 4rem);
+  --fs-display: clamp(2.9rem, 1.6rem + 5.6vw, 6.6rem);
+
+  --tracking-wide: 0.22em;
+
+  /* Spacing & layout */
+  --container: 1280px;
+  --gutter: clamp(1rem, 4vw, 2.5rem);
+  --section-y: clamp(5rem, 4rem + 6vw, 9.5rem);
+  --radius-sm: 2px;
+  --radius: 4px;
+  --radius-lg: 10px;
+  --nav-h: 84px;
+
+  /* Motion */
+  --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur: 0.45s;
+
+  --shadow-soft: 0 24px 60px -30px rgba(31, 28, 26, 0.35);
+  --shadow-card: 0 30px 70px -40px rgba(31, 28, 26, 0.45);
+}
+
+@media (max-width: 860px) {
+  :root {
+    --nav-h: 70px;
+  }
+}
