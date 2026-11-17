@@ -6,7 +6,7 @@ import { ArrowRight, MapPin, Sparkle } from './Icons';
 import './Hero.css';
 
 const HERO_IMAGE = {
-  id: '1531123897727-8f129e1688ce',
+  id: '1669040084821-097235fe53ff',
 };
 
 export default function Hero() {
@@ -15,7 +15,7 @@ export default function Hero() {
       <div className="hero__media">
         <SmartImage
           image={HERO_IMAGE}
-          alt="Close-up portrait of a woman with radiant, glowing skin"
+          alt="Portrait of a woman with luminous, glowing skin and gold hoop earrings"
           widths={[640, 960, 1280, 1800, 2400]}
           sizes="(max-width: 860px) 100vw, 60vw"
           priority

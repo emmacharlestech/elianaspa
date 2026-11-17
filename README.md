@@ -30,7 +30,7 @@ All business content lives in `src/data/`:
 | File | What it controls |
 | --- | --- |
 | `site.js` | Business name, WhatsApp link, address, map search, phone / email / hours / Instagram (empty = "coming soon") |
-| `services.js` | The six services: titles, descriptions, highlights, images. `price: null` shows "Price on request"; set e.g. `'₦25,000'` |
+| `services.js` | The services: titles, descriptions, highlights, images. `price: null` shows "Price on request"; set e.g. `'₦25,000'` |
 | `products.js` | Product catalogue and filter categories. **All current items are samples** (`sample: true` shows a "Sample" badge and the catalogue notice) |
 | `gallery.js` | Gallery images and categories |
 | `testimonials.js` | **Placeholder** review cards (`placeholder: true`). Replace with genuine reviews used with permission |

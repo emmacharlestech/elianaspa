@@ -8,7 +8,7 @@ export const GALLERY_CATEGORIES = ['All', 'Treatments', 'Spa Interiors', 'Produc
 export const GALLERY = [
   { id: 'g1', category: 'Treatments', ratio: 1.25, image: { id: '1512290923902-8a9f81dc236c' }, alt: 'Therapist performing a relaxing facial massage' },
   { id: 'g2', category: 'Spa Interiors', ratio: 0.75, image: { id: '1560750588-73207b1ef5b8' }, alt: 'Serene spa lounge with a plunge pool and lounger' },
-  { id: 'g3', category: 'Transformations', ratio: 1.3, image: { id: '1531123897727-8f129e1688ce' }, alt: 'Portrait of a woman with radiant, even-toned skin' },
+  { id: 'g3', category: 'Transformations', ratio: 1.3, image: { id: '1716827173458-8bde30d6c78f' }, alt: 'Woman with radiant, glowing skin, eyes closed in a moment of calm' },
   { id: 'g4', category: 'Products', ratio: 1, image: { id: '1612817288484-6f916006741a' }, alt: 'Natural skincare bottles arranged with pebbles and greenery' },
   { id: 'g5', category: 'Treatments', ratio: 0.8, image: { id: '1616394584738-fc6e612e71b9' }, alt: 'Client receiving a hydrating face mask treatment' },
   { id: 'g6', category: 'Equipment', ratio: 1.2, image: { id: '1600428877878-1a0fd85beda8' }, alt: 'Facial roller, gua sha stone and serum' },

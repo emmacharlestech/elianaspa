@@ -8,6 +8,11 @@
   display: flex;
 }
 
+/* Centre a lone card on the last row (e.g. 7 services in 3 columns) */
+.services__grid > .reveal:last-child:nth-child(3n + 1) {
+  grid-column: 2;
+}
+
 /* ---------- Card ---------- */
 .service-card {
   display: flex;
@@ -244,6 +249,16 @@
   .services__grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
+
+  .services__grid > .reveal:last-child:nth-child(3n + 1) {
+    grid-column: auto;
+  }
+
+  .services__grid > .reveal:last-child:nth-child(2n + 1) {
+    grid-column: 1 / -1;
+    justify-self: center;
+    width: calc(50% - clamp(1.25rem, 2.5vw, 2.25rem) / 2);
+  }
 }
 
 @media (max-width: 860px) {
@@ -259,6 +274,10 @@
 @media (max-width: 640px) {
   .services__grid {
     grid-template-columns: 1fr;
+  }
+
+  .services__grid > .reveal:last-child:nth-child(2n + 1) {
+    width: 100%;
   }
 
   .service-card__body {

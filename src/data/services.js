@@ -87,4 +87,18 @@ export const SERVICES = [
     price: null,
     image: { id: '1589710751893-f9a6770ad71b', alt: 'Lash technician applying eyelash extensions with tweezers' },
   },
+  {
+    id: 'teeth-whitening',
+    title: 'Teeth Whitening',
+    tagline: 'A brighter, more confident smile',
+    description:
+      'Cosmetic whitening treatments that help lift surface stains and brighten your smile, leaving you camera-ready and confident.',
+    highlights: [
+      'Suitability check before treatment',
+      'Comfortable, non-invasive sessions',
+      'Aftercare tips to keep your smile bright',
+    ],
+    price: null,
+    image: { id: '1654373535457-383a0a4d00f9', alt: 'Close-up of a bright white smile with soft nude lips' },
+  },
 ];
