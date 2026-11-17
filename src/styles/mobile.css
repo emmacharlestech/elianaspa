@@ -1,0 +1,225 @@
+/* ==========================================================
+   Mobile & touch refinements
+   Loaded last so these rules win over component styles.
+   ========================================================== */
+
+/* ---------- Comfortable tap targets on touch devices ---------- */
+@media (pointer: coarse) {
+  .pill {
+    min-height: 44px;
+  }
+
+  .link-underline,
+  .contact-info__link,
+  .footer__list a,
+  .footer__top {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+  }
+
+  .contact-info__link {
+    margin-top: 0;
+  }
+
+  .footer__list li + li {
+    margin-top: 0;
+  }
+}
+
+/* ---------- Phones & small tablets ---------- */
+@media (max-width: 760px) {
+  /* Readable small-caps labels (were 10–11px) */
+  .eyebrow,
+  .service-card__tagline,
+  .product-card__cat,
+  .contact-info__label,
+  .field label,
+  .footer__heading,
+  .testimonial__detail,
+  .gallery__cat,
+  .lightbox__cat {
+    font-size: 0.75rem;
+    letter-spacing: 0.16em;
+  }
+
+  .badge {
+    font-size: 0.66rem;
+    letter-spacing: 0.14em;
+  }
+
+  .btn {
+    font-size: 0.78rem;
+    letter-spacing: 0.16em;
+  }
+
+  .btn--sm {
+    font-size: 0.74rem;
+  }
+
+  .pill {
+    font-size: 0.74rem;
+    letter-spacing: 0.12em;
+  }
+
+  .service-card__toggle,
+  .link-underline,
+  .contact-info__link {
+    font-size: 0.75rem;
+  }
+
+  .logo__descriptor {
+    font-size: 0.6rem;
+    letter-spacing: 0.24em;
+  }
+
+  .hero__location {
+    font-size: 0.7rem;
+  }
+
+  .about__pillar-num {
+    font-size: 0.8rem;
+  }
+
+  .contact__map-note,
+  .enquiry__privacy {
+    font-size: 0.8rem;
+  }
+
+  /* Filters become a single swipeable row with a fade hint */
+  .filters.products__filters,
+  .filters.gallery__filters {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x proximity;
+    -webkit-overflow-scrolling: touch;
+    margin-inline: calc(var(--gutter) * -1);
+    padding: 0.25rem var(--gutter) 0.5rem;
+    width: calc(100% + var(--gutter) * 2);
+    max-width: none;
+    scrollbar-width: none;
+    -webkit-mask-image: linear-gradient(90deg, #000 85%, transparent);
+    mask-image: linear-gradient(90deg, #000 85%, transparent);
+  }
+
+  .filters.products__filters::-webkit-scrollbar,
+  .filters.gallery__filters::-webkit-scrollbar {
+    display: none;
+  }
+
+  .filters .pill {
+    flex-shrink: 0;
+    scroll-snap-align: start;
+  }
+
+  /* Keep the decorative About seal inside the screen */
+  .about__seal {
+    left: 2%;
+    bottom: 4%;
+  }
+
+  /* Section intros a touch tighter on small screens */
+  .section-heading {
+    margin-bottom: 2.25rem;
+  }
+
+  .lede {
+    font-size: 1.02rem;
+  }
+}
+
+@media (max-width: 600px) {
+  /* Footer: two compact columns instead of one long list */
+  .footer__grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 2.25rem 1.25rem;
+  }
+
+  .footer__brand,
+  .footer__grid > div:last-child {
+    grid-column: 1 / -1;
+  }
+
+  .footer__list a {
+    font-size: 0.92rem;
+  }
+
+  .footer__cta-title {
+    font-size: 2.1rem;
+  }
+
+  /* Floating WhatsApp button: slightly smaller, clear of the home bar */
+  .wa-float {
+    width: 54px;
+    height: 54px;
+    right: 14px;
+    bottom: calc(14px + env(safe-area-inset-bottom));
+  }
+
+  .wa-float__icon {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+
+  .services__grid,
+  .products__grid {
+    padding-bottom: 0.5rem;
+  }
+
+  .product-card__body .btn {
+    min-height: 46px;
+  }
+
+  /* Journey steps & testimonials breathe a little less */
+  .journey__step {
+    padding: 1.4rem 0;
+  }
+
+  .testimonial {
+    padding: 1.75rem 1.4rem;
+  }
+
+  .testimonial__badge {
+    top: 1rem;
+    right: 1rem;
+  }
+
+  .testimonial__mark {
+    margin-top: 0.75rem;
+  }
+
+  /* Map card sits under the map, full width */
+  .contact__map-card .btn {
+    width: 100%;
+  }
+
+  .enquiry {
+    padding: 1.5rem 1.15rem;
+  }
+}
+
+/* Very small phones (≤360px) */
+@media (max-width: 360px) {
+  :root {
+    --gutter: 14px;
+  }
+
+  .products__grid {
+    column-gap: 0.7rem;
+  }
+
+  .product-card__name {
+    font-size: 1.08rem;
+  }
+
+  .product-card .btn {
+    letter-spacing: 0.1em;
+    padding-inline: 0.5rem;
+  }
+
+  .section-heading__title,
+  .about__title {
+    font-size: 2.15rem;
+  }
+}
