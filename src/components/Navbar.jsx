@@ -10,16 +10,40 @@ const SECTION_IDS = NAV_LINKS.map((l) => l.id);
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
+  const [hidden, setHidden] = useState(false);
   const [open, setOpen] = useState(false);
   const active = useActiveSection(SECTION_IDS);
   const toggleRef = useRef(null);
   const panelRef = useRef(null);
+  const progressRef = useRef(null);
 
+  // Solid background after scrolling, gold reading-progress line,
+  // and hide-on-scroll-down / reveal-on-scroll-up behaviour.
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40);
-    onScroll();
+    let lastY = window.scrollY;
+    let frame = 0;
+    const update = () => {
+      frame = 0;
+      const y = window.scrollY;
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      setScrolled(y > 40);
+      if (progressRef.current) {
+        progressRef.current.style.transform = `scaleX(${max > 0 ? Math.min(y / max, 1) : 0})`;
+      }
+      if (Math.abs(y - lastY) > 6) {
+        setHidden(y > lastY && y > window.innerHeight * 0.6);
+        lastY = y;
+      }
+    };
+    const onScroll = () => {
+      if (!frame) frame = requestAnimationFrame(update);
+    };
+    update();
     window.addEventListener('scroll', onScroll, { passive: true });
-    return () => window.removeEventListener('scroll', onScroll);
+    return () => {
+      cancelAnimationFrame(frame);
+      window.removeEventListener('scroll', onScroll);
+    };
   }, []);
 
   const close = useCallback((restoreFocus = true) => {
@@ -63,7 +87,11 @@ export default function Navbar() {
   const solid = scrolled || open;
 
   return (
-    <header className={`nav ${solid ? 'nav--solid' : ''} ${open ? 'nav--open' : ''}`}>
+    <header
+      className={`nav ${solid ? 'nav--solid' : ''} ${open ? 'nav--open' : ''} ${hidden && !open ? 'nav--hidden' : ''}`}
+      onFocusCapture={() => setHidden(false)}
+    >
+      <span className="nav__progress" ref={progressRef} aria-hidden="true" />
       <div className="container nav__bar">
         <a href="#home" className="nav__brand" aria-label={`${SITE.name}, back to top`} onClick={() => open && close(false)}>
           <Logo tone={solid && !open ? 'dark' : 'light'} />

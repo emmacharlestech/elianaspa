@@ -5,7 +5,32 @@
   transition:
     background-color 0.5s var(--ease),
     box-shadow 0.5s var(--ease),
-    backdrop-filter 0.5s var(--ease);
+    backdrop-filter 0.5s var(--ease),
+    transform 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+/* Slides away while scrolling down, returns on scroll up */
+.nav--hidden {
+  transform: translateY(-100%);
+  box-shadow: none;
+}
+
+/* Thin gold reading-progress line along the bottom of the bar */
+.nav__progress {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  z-index: 3;
+  background: linear-gradient(90deg, var(--gold-deep), var(--gold-light));
+  transform: scaleX(0);
+  transform-origin: left;
+  pointer-events: none;
+}
+
+.nav--open .nav__progress {
+  opacity: 0;
 }
 
 .nav::after {

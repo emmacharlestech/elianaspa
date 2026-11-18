@@ -1,8 +1,10 @@
+import { useEffect, useRef } from 'react';
 import { SITE } from '../data/site';
 import { SERVICES } from '../data/services';
 import SmartImage from './SmartImage';
 import BookButton from './BookButton';
 import { ArrowRight, MapPin, Sparkle } from './Icons';
+import { useParallax, prefersReducedMotion } from '../hooks/useParallax';
 import './Hero.css';
 
 const HERO_IMAGE = {
@@ -10,9 +12,33 @@ const HERO_IMAGE = {
 };
 
 export default function Hero() {
+  const heroRef = useRef(null);
+  const mediaRef = useParallax(0.28);
+
+  // Scroll-linked fade of the hero copy as the visitor moves on (--hero-p: 0 → 1).
+  useEffect(() => {
+    const hero = heroRef.current;
+    if (!hero || prefersReducedMotion()) return undefined;
+    let frame = 0;
+    const update = () => {
+      frame = 0;
+      const p = Math.min(Math.max(window.scrollY / (hero.offsetHeight * 0.85), 0), 1);
+      hero.style.setProperty('--hero-p', p.toFixed(3));
+    };
+    const onScroll = () => {
+      if (!frame) frame = requestAnimationFrame(update);
+    };
+    update();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => {
+      cancelAnimationFrame(frame);
+      window.removeEventListener('scroll', onScroll);
+    };
+  }, []);
+
   return (
-    <section id="home" className="hero" aria-labelledby="hero-title">
-      <div className="hero__media">
+    <section id="home" ref={heroRef} className="hero" aria-labelledby="hero-title">
+      <div className="hero__media" ref={mediaRef}>
         <SmartImage
           image={HERO_IMAGE}
           alt="Portrait of a woman with luminous, glowing skin and gold hoop earrings"
@@ -23,6 +49,7 @@ export default function Hero() {
         />
         <div className="hero__veil" aria-hidden="true" />
       </div>
+      <span className="grain" aria-hidden="true" />
 
       <div className="hero__vertical" aria-hidden="true">
         Cosmetics <span>·</span> Skincare <span>·</span> Aesthetics
@@ -34,9 +61,13 @@ export default function Hero() {
             {SITE.address.city}, {SITE.address.state}
           </p>
           <h1 id="hero-title" className="hero__title">
-            <span className="hero__line">Reveal Your Beauty.</span>
+            <span className="hero__line">
+              <span className="hero__line-inner">Reveal Your Beauty.</span>
+            </span>
             <span className="hero__line hero__line--accent">
-              <em>Rediscover</em> Your Glow.
+              <span className="hero__line-inner">
+                <em>Rediscover</em> Your Glow.
+              </span>
             </span>
           </h1>
           <p className="hero__lede">

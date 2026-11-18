@@ -1,0 +1,153 @@
+/* ==========================================================
+   Cinematic layer: film grain, curtain image reveals,
+   masked heading reveals and gallery tone.
+   Everything here is decorative and respects reduced motion.
+   ========================================================== */
+
+/* ---------- Film grain ---------- */
+.grain {
+  position: absolute;
+  inset: -50%;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.07;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 1.4 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  animation: grain 1.2s steps(6) infinite;
+}
+
+.hero .grain {
+  z-index: -1;
+}
+
+/* Content above the grain layer */
+.manifesto__inner,
+.experience__inner {
+  position: relative;
+  z-index: 1;
+}
+
+@keyframes grain {
+  0% { transform: translate(0, 0); }
+  20% { transform: translate(-3%, 2%); }
+  40% { transform: translate(2%, -3%); }
+  60% { transform: translate(-2%, -1%); }
+  80% { transform: translate(3%, 3%); }
+  100% { transform: translate(0, 0); }
+}
+
+/* Static grain on touch devices to save battery */
+@media (pointer: coarse) {
+  .grain {
+    animation: none;
+    inset: 0;
+  }
+}
+
+/* ---------- Curtain reveal for images ---------- */
+.reveal .service-card__media .smart-img,
+.about__visual .about__img-main,
+.about__visual .about__img-accent {
+  clip-path: inset(100% 0 0 0);
+  transition: clip-path 1.4s cubic-bezier(0.77, 0, 0.18, 1);
+  transition-delay: calc(var(--d, 0) * 110ms + 150ms);
+}
+
+.reveal .service-card__media img,
+.about__visual .about__img-main img {
+  transform: scale(1.18);
+  transition:
+    transform 1.8s cubic-bezier(0.19, 1, 0.22, 1),
+    opacity 0.9s var(--ease);
+}
+
+.reveal.is-visible .service-card__media .smart-img,
+.about__visual.is-visible .about__img-main,
+.about__visual.is-visible .about__img-accent {
+  clip-path: inset(0 0 0 0);
+}
+
+.reveal.is-visible .service-card__media img,
+.about__visual.is-visible .about__img-main img {
+  transform: scale(1);
+}
+
+.about__visual .about__img-accent {
+  transition-delay: 0.65s;
+}
+
+/* Hover zoom still works once revealed */
+.reveal.is-visible .service-card:hover .service-card__media img {
+  transform: scale(1.06);
+}
+
+/* ---------- Headings rise from behind a mask ---------- */
+.section-heading.reveal {
+  opacity: 1;
+  transform: none;
+}
+
+.section-heading.reveal > * {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 0.9s var(--ease-out),
+    transform 1.1s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.section-heading.reveal .section-heading__title {
+  clip-path: inset(0 0 100% 0);
+  transform: translateY(0.45em);
+  transition:
+    clip-path 1.2s cubic-bezier(0.19, 1, 0.22, 1) 0.12s,
+    transform 1.2s cubic-bezier(0.19, 1, 0.22, 1) 0.12s,
+    opacity 0.6s var(--ease) 0.12s;
+}
+
+.section-heading.reveal .section-heading__intro {
+  transition-delay: 0.3s;
+}
+
+.section-heading.reveal.is-visible > * {
+  opacity: 1;
+  transform: none;
+}
+
+.section-heading.reveal.is-visible .section-heading__title {
+  clip-path: inset(-10% 0 -25% 0);
+}
+
+/* ---------- Gallery: a softer, filmic tone that warms on hover ---------- */
+.gallery__img img {
+  filter: saturate(0.82) contrast(1.03);
+  transition:
+    opacity 0.9s var(--ease),
+    transform 1.2s var(--ease-out),
+    filter 0.8s var(--ease);
+}
+
+.gallery__tile:hover .gallery__img img,
+.gallery__tile:focus-visible .gallery__img img {
+  filter: saturate(1.05) contrast(1.03);
+}
+
+/* ---------- Reduced motion: show everything immediately ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .grain {
+    animation: none;
+  }
+
+  .reveal .service-card__media .smart-img,
+  .about__visual .about__img-main,
+  .about__visual .about__img-accent,
+  .section-heading.reveal .section-heading__title {
+    clip-path: none;
+  }
+
+  .reveal .service-card__media img,
+  .about__visual .about__img-main img,
+  .section-heading.reveal > * {
+    transform: none;
+    opacity: 1;
+  }
+}
