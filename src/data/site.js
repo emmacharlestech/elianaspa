@@ -5,11 +5,24 @@
  */
 export const SITE = {
   name: "Eliana's Cosmetics & Aesthetics",
+
+  // Public address of the website (no trailing slash). Update this when a
+  // custom domain is connected; canonical links, sitemap and structured
+  // data are generated from it at build time.
+  url: 'https://elianaspa.vercel.app',
   shortName: "Eliana's",
   descriptor: 'Cosmetics & Aesthetics',
 
-  // Every booking / enquiry button on the site points here.
-  // Note: WhatsApp QR links (wa.me/qr/...) cannot carry a pre-filled message.
+  // Every booking / enquiry button on the site opens WhatsApp.
+  //
+  // whatsappNumber: the business WhatsApp number in international format,
+  // digits only (e.g. '2348031234567'). When set, every Book button opens
+  // WhatsApp with the appointment enquiry already typed in.
+  //
+  // whatsappUrl: the business QR chat link, used while whatsappNumber is
+  // empty. QR links cannot carry a message, so the site copies the
+  // enquiry to the clipboard and tells the customer to paste it.
+  whatsappNumber: '',
   whatsappUrl: 'https://wa.me/qr/I6QS3UZBKB4CA1',
 
   address: {
@@ -30,13 +43,17 @@ export const SITE = {
   },
 };
 
+// `desktop: false` keeps a link out of the (space-limited) desktop bar;
+// every link appears in the mobile menu and the footer.
 export const NAV_LINKS = [
-  { id: 'home', label: 'Home' },
+  { id: 'home', label: 'Home', desktop: false },
   { id: 'about', label: 'About' },
-  { id: 'services', label: 'Services' },
+  { id: 'services', label: 'Treatments' },
+  { id: 'experience', label: 'Experience' },
   { id: 'products', label: 'Products' },
   { id: 'gallery', label: 'Gallery' },
-  { id: 'testimonials', label: 'Reviews' },
+  { id: 'testimonials', label: 'Reviews', desktop: false },
+  { id: 'booking', label: 'Book', desktop: false },
   { id: 'contact', label: 'Contact' },
 ];
 

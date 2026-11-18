@@ -72,7 +72,7 @@ export default function Products() {
                 <h3 className="product-card__name">{p.name}</h3>
                 <p className="product-card__desc">{p.description}</p>
                 <p className="product-card__price">{p.price ?? 'Price on request'}</p>
-                <BookButton variant="outline" size="sm" block label={`Enquire about ${p.name}`}>
+                <BookButton variant="outline" size="sm" block label={`about ${p.name}`}>
                   Enquire
                 </BookButton>
               </div>

@@ -1,9 +1,12 @@
 /**
  * TESTIMONIALS
  *
- * These are editable PLACEHOLDERS, not real reviews (`placeholder: true`).
- * Replace each with a genuine client review (with the client's permission),
- * then set `placeholder: false` to remove the "Placeholder" label.
+ * Entries with `placeholder: true` are templates and are NEVER shown on the
+ * website. While every entry is a placeholder, the Reviews section shows a
+ * "Client stories are on their way" panel instead.
+ *
+ * To publish a review: replace the text with a genuine client review (used
+ * with the client's permission) and set `placeholder: false`.
  */
 export const TESTIMONIALS = [
   {

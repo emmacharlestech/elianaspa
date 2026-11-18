@@ -1,55 +1,30 @@
 import { useEffect, useState } from 'react';
 import './Preloader.css';
 
-const SEEN_KEY = 'ea-intro-seen';
-
-/** Should the intro play? Once per browser session, never with reduced motion. */
-export function shouldPlayIntro() {
-  if (typeof window === 'undefined') return false;
-  if (window.matchMedia?.('(prefers-reduced-motion: reduce)').matches) return false;
-  try {
-    return !window.sessionStorage.getItem(SEEN_KEY);
-  } catch {
-    return false;
-  }
-}
-
-/** Signals the hero (via <html class="intro-done">) that it can start animating. */
-export function markIntroDone() {
-  document.documentElement.classList.add('intro-done');
-  try {
-    window.sessionStorage.setItem(SEEN_KEY, '1');
-  } catch {
-    /* storage unavailable — fine */
-  }
-}
-
 /**
- * Cinematic opening: the EA monogram draws itself, the name fades up,
- * then the curtain splits to reveal the hero. ~2s, decorative only.
+ * Cinematic opening: the EA monogram draws itself, the name rises, then
+ * the curtain splits to reveal the hero.
+ *
+ * The whole timeline is pure CSS. A tiny inline script in index.html
+ * decides before first paint whether it plays (once per session, never
+ * with reduced motion) by adding `intro-skip` or, after 1.45s,
+ * `intro-done` to <html>. So the page can never get stuck behind the
+ * intro, even if JavaScript is slow or fails. React only removes the
+ * finished overlay from the DOM.
  */
 export default function Preloader() {
-  const [phase, setPhase] = useState('in'); // in → out → gone
+  const [gone, setGone] = useState(false);
 
   useEffect(() => {
-    document.body.classList.add('is-locked');
-    const toOut = setTimeout(() => {
-      setPhase('out');
-      document.body.classList.remove('is-locked');
-      markIntroDone();
-    }, 1450);
-    const toGone = setTimeout(() => setPhase('gone'), 2400);
-    return () => {
-      clearTimeout(toOut);
-      clearTimeout(toGone);
-      document.body.classList.remove('is-locked');
-    };
+    const skip = document.documentElement.classList.contains('intro-skip');
+    const t = setTimeout(() => setGone(true), skip ? 0 : 2600);
+    return () => clearTimeout(t);
   }, []);
 
-  if (phase === 'gone') return null;
+  if (gone) return null;
 
   return (
-    <div className={`preloader preloader--${phase}`} aria-hidden="true">
+    <div className="preloader" aria-hidden="true">
       <div className="preloader__panel preloader__panel--top" />
       <div className="preloader__panel preloader__panel--bottom" />
       <div className="preloader__inner">

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { SITE } from '../data/site';
+import { serviceMessage, whatsappHref } from '../lib/whatsapp';
 import { WhatsApp } from './Icons';
 import './WhatsAppFloat.css';
 
@@ -15,7 +15,7 @@ export default function WhatsAppFloat() {
 
   return (
     <a
-      href={SITE.whatsappUrl}
+      href={whatsappHref(serviceMessage())}
       target="_blank"
       rel="noopener noreferrer"
       className={`wa-float ${visible ? 'is-visible' : ''}`}

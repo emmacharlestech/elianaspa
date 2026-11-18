@@ -67,7 +67,7 @@
   align-items: flex-end;
   justify-content: space-between;
   padding: 1rem 1.1rem;
-  background: linear-gradient(180deg, rgba(31, 28, 26, 0) 45%, rgba(31, 28, 26, 0.75));
+  background: linear-gradient(180deg, rgba(42, 29, 23, 0) 45%, rgba(42, 29, 23, 0.75));
   color: var(--ivory);
   opacity: 0;
   transition: opacity 0.45s var(--ease);
@@ -109,7 +109,7 @@
 @media (hover: none) {
   .gallery__overlay {
     opacity: 1;
-    background: linear-gradient(180deg, rgba(31, 28, 26, 0) 70%, rgba(31, 28, 26, 0.6));
+    background: linear-gradient(180deg, rgba(42, 29, 23, 0) 70%, rgba(42, 29, 23, 0.6));
   }
 }
 

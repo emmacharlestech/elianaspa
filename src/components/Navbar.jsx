@@ -93,13 +93,14 @@ export default function Navbar() {
     >
       <span className="nav__progress" ref={progressRef} aria-hidden="true" />
       <div className="container nav__bar">
-        <a href="#home" className="nav__brand" aria-label={`${SITE.name}, back to top`} onClick={() => open && close(false)}>
+        <a href="#home" className="nav__brand" onClick={() => open && close(false)}>
           <Logo tone={solid && !open ? 'dark' : 'light'} />
+          <span className="visually-hidden">, back to top</span>
         </a>
 
         <nav className="nav__links" aria-label="Primary">
           <ul>
-            {NAV_LINKS.slice(1).map((link) => (
+            {NAV_LINKS.filter((l) => l.desktop !== false).map((link) => (
               <li key={link.id}>
                 <a
                   href={`#${link.id}`}
@@ -114,9 +115,9 @@ export default function Navbar() {
         </nav>
 
         <div className="nav__cta">
-          <BookButton variant={solid ? 'dark' : 'ghost-light'} size="sm">
+          <a href="#booking" className={`btn btn--sm ${solid ? 'btn--dark' : 'btn--ghost-light'}`}>
             Book Now
-          </BookButton>
+          </a>
         </div>
 
         <button

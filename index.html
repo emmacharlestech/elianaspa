@@ -3,60 +3,66 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-    <title>Eliana's Cosmetics &amp; Aesthetics | Skincare, Facials &amp; Beauty in Asaba</title>
+    <title>Eliana's Cosmetics &amp; Aesthetics | Luxury Skincare &amp; Beauty in Asaba</title>
     <meta
       name="description"
-      content="Eliana's Cosmetics & Aesthetics is a beauty and skincare destination in Asaba, Delta State. Facials and massage, body treatments, stretch mark treatments, skin tightening, waxing, lash extensions, teeth whitening and cosmetics. Book on WhatsApp."
+      content="Luxury beauty and skincare in Asaba, Delta State: facials, body treatments, skin tightening, waxing, lash extensions and teeth whitening. Book on WhatsApp."
     />
-    <meta name="keywords" content="Asaba spa, facials Asaba, lash extensions Asaba, skincare Asaba, waxing Asaba, body treatments, skin tightening, stretch marks treatment, teeth whitening Asaba, cosmetics Delta State" />
-    <meta name="theme-color" content="#1F1C1A" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="theme-color" content="#2A1D17" />
     <meta name="format-detection" content="telephone=no" />
+    <meta name="geo.region" content="NG-DE" />
+    <meta name="geo.placename" content="Asaba" />
+    <link rel="canonical" href="__SITE_URL__/" />
 
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Eliana's Cosmetics & Aesthetics" />
+    <meta property="og:url" content="__SITE_URL__/" />
     <meta property="og:title" content="Eliana's Cosmetics & Aesthetics | Reveal Your Beauty. Rediscover Your Glow." />
-    <meta property="og:description" content="Facials, body treatments, lash extensions and curated skincare at Annie Supermarket, by Marble Hill, Asaba." />
+    <meta property="og:description" content="Facials, body treatments, lash extensions, teeth whitening and curated skincare at Annie Supermarket, by Marble Hill, Asaba." />
     <meta property="og:image" content="https://images.unsplash.com/photo-1669040084821-097235fe53ff?auto=format&fit=crop&crop=faces&w=1200&h=630&q=75" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Eliana's Cosmetics & Aesthetics, luxury beauty and skincare in Asaba" />
     <meta property="og:locale" content="en_NG" />
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Eliana's Cosmetics & Aesthetics | Luxury Skincare & Beauty in Asaba" />
+    <meta name="twitter:description" content="Facials, body treatments, lash extensions, teeth whitening and curated skincare in Asaba, Delta State." />
+    <meta name="twitter:image" content="https://images.unsplash.com/photo-1669040084821-097235fe53ff?auto=format&fit=crop&crop=faces&w=1200&h=630&q=75" />
 
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="preconnect" href="https://images.unsplash.com" crossorigin />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500&display=swap"
-    />
+    <!--app-preload-->
 
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "BeautySalon",
-        "name": "Eliana's Cosmetics & Aesthetics",
-        "description": "Beauty, cosmetics and skincare destination offering facials and massage, body treatments, stretch mark treatments, skin tightening, waxing, lash extensions and teeth whitening.",
-        "address": {
-          "@type": "PostalAddress",
-          "streetAddress": "Annie Supermarket, by Marble Hill",
-          "addressLocality": "Asaba",
-          "addressRegion": "Delta State",
-          "addressCountry": "NG"
-        },
-        "areaServed": "Asaba, Delta State",
-        "sameAs": ["https://wa.me/qr/I6QS3UZBKB4CA1"]
-      }
+    <!-- Decides before first paint whether the opening intro plays:
+         once per browser session, never with reduced motion. -->
+    <script>
+      (function () {
+        var d = document.documentElement, skip = true;
+        try {
+          skip = !!sessionStorage.getItem('ea-intro-seen') || matchMedia('(prefers-reduced-motion: reduce)').matches;
+          if (!skip) sessionStorage.setItem('ea-intro-seen', '1');
+        } catch (e) {}
+        if (skip) d.className += ' intro-skip intro-done';
+        else setTimeout(function () { d.className += ' intro-done'; }, 1450);
+      })();
     </script>
+    <noscript>
+      <style>
+        .reveal, .reveal > *, .section-heading.reveal > *, .hero__eyebrow, .hero__lede, .hero__actions { opacity: 1 !important; transform: none !important; clip-path: none !important; }
+        .hero__line-inner { transform: none !important; }
+        .preloader { display: none !important; }
+        .smart-img img { opacity: 1 !important; }
+        .reveal .service-card__media .smart-img, .about__visual .about__img-main, .about__visual .about__img-accent { clip-path: none !important; }
+      </style>
+    </noscript>
+    <!--app-jsonld-->
   </head>
   <body>
-    <div id="root"></div>
-    <noscript>
-      <p style="padding:2rem;font-family:Georgia,serif;text-align:center">
-        Eliana's Cosmetics &amp; Aesthetics — Annie Supermarket, by Marble Hill, Asaba, Delta State.
-        Please enable JavaScript to view this site, or
-        <a href="https://wa.me/qr/I6QS3UZBKB4CA1">book on WhatsApp</a>.
-      </p>
-    </noscript>
+    <div id="root"><!--app-html--></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>

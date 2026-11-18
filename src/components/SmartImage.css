@@ -1,14 +1,12 @@
+/* Static warm placeholder while loading — no animated shimmer, which
+   forced the browser to restyle every pending image on every frame. */
 .smart-img {
   position: relative;
   overflow: hidden;
-  background:
-    linear-gradient(110deg, rgba(255, 255, 255, 0) 30%, rgba(255, 255, 255, 0.35) 50%, rgba(255, 255, 255, 0) 70%) var(--nude);
-  background-size: 250% 100%;
-  animation: img-shimmer 1.8s linear infinite;
+  background: linear-gradient(145deg, var(--cream), var(--nude));
 }
 
 .smart-img.is-loaded {
-  animation: none;
   background: var(--nude);
 }
 
@@ -29,7 +27,6 @@
 .smart-img--fallback {
   display: grid;
   place-items: center;
-  animation: none;
   background: linear-gradient(145deg, var(--cream), var(--nude));
 }
 
@@ -38,13 +35,4 @@
   max-width: 120px;
   color: var(--gold-deep);
   opacity: 0.55;
-}
-
-@keyframes img-shimmer {
-  from {
-    background-position: 125% 0;
-  }
-  to {
-    background-position: -125% 0;
-  }
 }

@@ -30,8 +30,8 @@
   inset: 0;
   z-index: -1;
   background:
-    radial-gradient(ellipse 70% 70% at 50% 50%, rgba(31, 28, 26, 0.35), rgba(31, 28, 26, 0.85)),
-    linear-gradient(180deg, rgba(31, 28, 26, 0.6), rgba(31, 28, 26, 0.15) 40%, rgba(31, 28, 26, 0.7));
+    radial-gradient(ellipse 70% 70% at 50% 50%, rgba(42, 29, 23, 0.35), rgba(42, 29, 23, 0.85)),
+    linear-gradient(180deg, rgba(42, 29, 23, 0.6), rgba(42, 29, 23, 0.15) 40%, rgba(42, 29, 23, 0.7));
 }
 
 .experience__inner {
@@ -87,6 +87,127 @@
   }
 
   .experience__actions .btn {
+    width: 100%;
+  }
+}
+
+/* ---------- What to expect ---------- */
+.expect {
+  background: var(--charcoal);
+  color: var(--muted-light);
+  padding-block: clamp(3rem, 2.5rem + 3vw, 5rem);
+}
+
+.expect__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.5rem 2rem;
+  margin-bottom: 2rem;
+}
+
+.expect__head .eyebrow {
+  margin: 0;
+}
+
+.expect__lede {
+  margin: 0;
+  max-width: 30rem;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: var(--fs-lg);
+  color: var(--ivory);
+}
+
+.expect__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  border-top: 1px solid var(--line-light);
+}
+
+.expect__item {
+  padding: 1.75rem clamp(1rem, 2vw, 1.75rem) 0 0;
+  position: relative;
+}
+
+.expect__item + .expect__item {
+  padding-left: clamp(1rem, 2vw, 1.75rem);
+  border-left: 1px solid var(--line-light);
+}
+
+.expect__num {
+  display: block;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 2.6rem;
+  line-height: 1;
+  color: var(--gold);
+  margin-bottom: 1rem;
+}
+
+.expect__item h3 {
+  font-size: 1.45rem;
+  color: var(--ivory);
+  margin-bottom: 0.5rem;
+}
+
+.expect__item p {
+  font-size: 0.95rem;
+  line-height: 1.65;
+}
+
+.expect__cta {
+  margin-top: 2.5rem;
+  text-align: center;
+}
+
+@media (max-width: 960px) {
+  .expect__list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .expect__item:nth-child(3) {
+    padding-left: 0;
+    border-left: 0;
+  }
+
+  .expect__item:nth-child(n + 3) {
+    margin-top: 1.75rem;
+    border-top: 1px solid var(--line-light);
+  }
+}
+
+@media (max-width: 560px) {
+  .expect__list {
+    grid-template-columns: 1fr;
+  }
+
+  .expect__item,
+  .expect__item + .expect__item {
+    display: grid;
+    grid-template-columns: 3.25rem 1fr;
+    column-gap: 0.75rem;
+    padding: 1.4rem 0;
+    margin-top: 0;
+    border-left: 0;
+    border-top: 1px solid var(--line-light);
+  }
+
+  .expect__item:first-child {
+    border-top: 0;
+  }
+
+  .expect__num {
+    grid-row: span 2;
+    font-size: 2rem;
+    margin: 0;
+  }
+
+  .expect__cta .btn {
     width: 100%;
   }
 }

@@ -2,8 +2,7 @@ import { SITE, fullAddress } from '../data/site';
 import SectionHeading from './SectionHeading';
 import Reveal from './Reveal';
 import BookButton from './BookButton';
-import EnquiryForm from './EnquiryForm';
-import { Clock, Instagram, Mail, MapPin, Phone, WhatsApp } from './Icons';
+import { Clock, Instagram, Mail, MapPin, Phone } from './Icons';
 import './Contact.css';
 
 const mapsSearch = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(SITE.mapQuery)}`;
@@ -33,33 +32,31 @@ export default function Contact() {
       <div className="container">
         <SectionHeading
           id="contact-title"
-          eyebrow="Contact & Booking"
+          eyebrow="Location & Contact"
           title={
             <>
-              Your glow <em>begins here</em>
+              Visit us <em>in Asaba</em>
             </>
           }
-          intro="The quickest way to book is on WhatsApp. Send us a message with the treatment you're interested in and your preferred day, and we'll confirm your appointment."
+          intro="Find us inside Annie Supermarket, by Marble Hill. For appointments and questions, WhatsApp is the quickest way to reach us."
         />
 
         <div className="contact__grid">
           <Reveal className="contact__aside">
-            <div className="contact__book">
-              <WhatsApp className="contact__book-icon" />
-              <h3>Book on WhatsApp</h3>
-              <p>Appointments, questions and product enquiries, all in one chat.</p>
-              <BookButton block>Chat with us now</BookButton>
-            </div>
+            <address className="contact__address-card">
+              <span className="eyebrow">Find us</span>
+              <p className="contact__map-name">{SITE.name}</p>
+              <p>
+                {SITE.address.line1}, {SITE.address.line2}
+                <br />
+                {SITE.address.city}, {SITE.address.state}, {SITE.address.country}
+              </p>
+            </address>
 
             <ul className="contact-info">
-              <InfoRow icon={<MapPin />} label="Visit us">
-                <address>
-                  {SITE.address.line1}, {SITE.address.line2}
-                  <br />
-                  {SITE.address.city}, {SITE.address.state}, {SITE.address.country}
-                </address>
+              <InfoRow icon={<MapPin />} label="Directions">
                 <a className="contact-info__link" href={mapsSearch} target="_blank" rel="noopener noreferrer">
-                  Get directions
+                  Open in Google Maps
                 </a>
               </InfoRow>
               <InfoRow icon={<Phone />} label="Phone">
@@ -81,31 +78,23 @@ export default function Contact() {
                 )}
               </InfoRow>
             </ul>
+
+            <BookButton block variant="dark">
+              Chat with us on WhatsApp
+            </BookButton>
           </Reveal>
 
-          <Reveal delay={1} className="contact__form-wrap">
-            <EnquiryForm />
+          <Reveal delay={1} className="contact__map">
+            <iframe
+              title={`Map showing ${fullAddress()}`}
+              src={mapsEmbed}
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              allowFullScreen
+            />
+            <p className="contact__map-note">Map pin is based on an address search and may be approximate.</p>
           </Reveal>
         </div>
-
-        <Reveal className="contact__map">
-          <iframe
-            title={`Map showing ${fullAddress()}`}
-            src={mapsEmbed}
-            loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
-            allowFullScreen
-          />
-          <div className="contact__map-card">
-            <span className="eyebrow">Find us</span>
-            <p className="contact__map-name">{SITE.name}</p>
-            <p>{fullAddress()}</p>
-            <a className="btn btn--dark btn--sm" href={mapsSearch} target="_blank" rel="noopener noreferrer">
-              Open in Google Maps
-            </a>
-            <p className="contact__map-note">Map pin is based on an address search and may be approximate.</p>
-          </div>
-        </Reveal>
       </div>
     </section>
   );

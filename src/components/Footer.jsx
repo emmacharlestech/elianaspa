@@ -2,7 +2,8 @@ import { NAV_LINKS, SITE } from '../data/site';
 import { SERVICES } from '../data/services';
 import Logo from './Logo';
 import BookButton from './BookButton';
-import { MapPin, WhatsApp } from './Icons';
+import { Instagram, MapPin, WhatsApp } from './Icons';
+import { serviceMessage, whatsappHref } from '../lib/whatsapp';
 import './Footer.css';
 
 export default function Footer() {
@@ -55,16 +56,22 @@ export default function Footer() {
           <div>
             <h2 className="footer__heading">Bookings</h2>
             <p className="footer__text">All appointments and enquiries are handled personally on WhatsApp.</p>
-            <a className="footer__wa" href={SITE.whatsappUrl} target="_blank" rel="noopener noreferrer">
+            <a className="footer__wa" href={whatsappHref(serviceMessage())} target="_blank" rel="noopener noreferrer">
               <WhatsApp />
               Message us
             </a>
+            {SITE.contact.instagram && (
+              <a className="footer__wa footer__social" href={SITE.contact.instagram} target="_blank" rel="noopener noreferrer">
+                <Instagram />
+                Instagram
+              </a>
+            )}
           </div>
         </div>
 
         <div className="footer__bottom">
           <p>
-            &copy; {year} {SITE.name}. All rights reserved.
+            &copy; <span suppressHydrationWarning>{year}</span> {SITE.name}. All rights reserved.
           </p>
           <p>Photography shown is illustrative.</p>
           <a href="#home" className="footer__top">

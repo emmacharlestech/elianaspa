@@ -51,7 +51,7 @@ export default function SmartImage({
         sizes={srcSet ? sizes : undefined}
         alt={alt}
         loading={priority ? 'eager' : 'lazy'}
-        decoding={priority ? 'sync' : 'async'}
+        decoding="async"
         fetchpriority={priority ? 'high' : undefined}
         className={imgClassName}
         onLoad={() => setStatus('loaded')}

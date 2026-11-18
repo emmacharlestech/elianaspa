@@ -132,3 +132,46 @@
     margin-inline: auto;
   }
 }
+
+/* ---------- "Client stories coming soon" panel ---------- */
+.stories-soon {
+  position: relative;
+  max-width: 46rem;
+  margin: 0 auto;
+  padding: clamp(2.25rem, 5vw, 3.75rem) clamp(1.5rem, 5vw, 4rem);
+  text-align: center;
+  background: rgba(252, 248, 242, 0.78);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-soft);
+}
+
+.stories-soon::before {
+  content: '';
+  position: absolute;
+  inset: 10px;
+  border: 1px solid rgba(201, 169, 110, 0.45);
+  border-radius: calc(var(--radius-lg) - 4px);
+  pointer-events: none;
+}
+
+.stories-soon__mono {
+  width: 52px;
+  height: 52px;
+  margin: 0 auto 1.25rem;
+  color: var(--gold-deep);
+}
+
+.stories-soon__quote {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: clamp(1.6rem, 1.2rem + 1.6vw, 2.4rem);
+  line-height: 1.2;
+  color: var(--charcoal);
+  margin-bottom: 1rem;
+}
+
+.stories-soon__text {
+  max-width: 32rem;
+  margin: 0 auto;
+  color: var(--muted);
+}

@@ -2,14 +2,16 @@ import { useEffect, useRef } from 'react';
 import { SITE } from '../data/site';
 import { SERVICES } from '../data/services';
 import SmartImage from './SmartImage';
-import BookButton from './BookButton';
 import { ArrowRight, MapPin, Sparkle } from './Icons';
 import { useParallax, prefersReducedMotion } from '../hooks/useParallax';
 import './Hero.css';
 
-const HERO_IMAGE = {
+// Exported so the build can preload exactly the same responsive image.
+export const HERO_IMAGE = {
   id: '1669040084821-097235fe53ff',
 };
+export const HERO_WIDTHS = [480, 720, 960, 1280, 1800, 2400];
+export const HERO_SIZES = '(max-width: 860px) 100vw, 60vw';
 
 export default function Hero() {
   const heroRef = useRef(null);
@@ -42,8 +44,8 @@ export default function Hero() {
         <SmartImage
           image={HERO_IMAGE}
           alt="Portrait of a woman with luminous, glowing skin and gold hoop earrings"
-          widths={[640, 960, 1280, 1800, 2400]}
-          sizes="(max-width: 860px) 100vw, 60vw"
+          widths={HERO_WIDTHS}
+          sizes={HERO_SIZES}
           priority
           className="hero__img"
         />
@@ -76,10 +78,12 @@ export default function Hero() {
             calm, elegant space.
           </p>
           <div className="hero__actions">
-            <BookButton>Book an Appointment</BookButton>
-            <a href="#services" className="btn btn--ghost-light">
-              <span>Explore Our Services</span>
+            <a href="#booking" className="btn btn--gold btn--lg hero__cta">
+              <span>Book Your Experience</span>
               <ArrowRight />
+            </a>
+            <a href="#services" className="btn btn--ghost-light btn--lg">
+              <span>Explore Treatments</span>
             </a>
           </div>
         </div>

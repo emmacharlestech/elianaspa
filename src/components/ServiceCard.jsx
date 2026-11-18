@@ -6,6 +6,7 @@ import { Check, Plus } from './Icons';
 export default function ServiceCard({ service, index }) {
   const [open, setOpen] = useState(false);
   const detailsId = useId();
+  // Only show a price once it has been confirmed in src/data/services.js
   const priceLabel = service.price ?? 'Price on request';
 
   return (
@@ -55,7 +56,7 @@ export default function ServiceCard({ service, index }) {
           </button>
         </div>
 
-        <BookButton variant="outline" block label={`Book ${service.title}`}>
+        <BookButton variant="outline" block label={`for ${service.title}`} service={service.title}>
           Book this treatment
         </BookButton>
       </div>

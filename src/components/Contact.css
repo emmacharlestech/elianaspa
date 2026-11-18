@@ -394,3 +394,66 @@
     padding: 1.75rem 1.4rem;
   }
 }
+
+/* ==========================================================
+   Location & contact layout (details beside an interactive map)
+   ========================================================== */
+.contact .contact__grid {
+  align-items: stretch;
+}
+
+.contact__aside {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.contact__address-card {
+  font-style: normal;
+  padding: 1.75rem 1.75rem 1.5rem;
+  background: var(--ivory);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-soft);
+}
+
+.contact__address-card .eyebrow {
+  margin-bottom: 0.75rem;
+}
+
+.contact__address-card p:last-child {
+  color: var(--muted);
+  margin: 0;
+}
+
+.contact .contact__map {
+  margin-top: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 460px;
+  background: var(--nude);
+}
+
+.contact .contact__map iframe {
+  flex: 1;
+  height: auto;
+  min-height: 420px;
+}
+
+.contact .contact__map-note {
+  margin: 0;
+  padding: 0.7rem 1rem;
+  background: var(--ivory);
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-style: italic;
+}
+
+@media (max-width: 960px) {
+  .contact .contact__map {
+    min-height: 0;
+  }
+
+  .contact .contact__map iframe {
+    min-height: 340px;
+  }
+}

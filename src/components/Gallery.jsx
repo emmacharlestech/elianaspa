@@ -48,17 +48,17 @@ export default function Gallery() {
                 type="button"
                 className="gallery__tile"
                 onClick={() => setOpenIndex(i)}
-                aria-label={`Open image: ${item.alt}`}
               >
                 <SmartImage
                   image={item.image}
-                  alt=""
+                  alt={item.alt}
                   ratio={item.ratio}
                   widths={[360, 540, 720, 960]}
                   sizes="(max-width: 600px) 46vw, (max-width: 1080px) 31vw, 24vw"
                   className="gallery__img"
                   style={{ aspectRatio: `1 / ${item.ratio}` }}
                 />
+                <span className="visually-hidden">, view larger</span>
                 <span className="gallery__overlay" aria-hidden="true">
                   <span className="gallery__cat">{item.category}</span>
                   <Expand />

@@ -479,3 +479,10 @@ section[id] {
     transform: none;
   }
 }
+
+.btn--lg {
+  min-height: 58px;
+  padding: 1.05rem 2.3rem;
+  font-size: 0.78rem;
+  letter-spacing: 0.22em;
+}

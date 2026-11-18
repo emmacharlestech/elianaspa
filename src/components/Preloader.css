@@ -4,11 +4,13 @@
   z-index: 1000;
   display: grid;
   place-items: center;
-  pointer-events: none;
+  /* blocks clicks while the curtain is closed, then steps out of the way */
+  animation: pl-release 0s linear 1.45s forwards, pl-hide 0s linear 2.5s forwards;
 }
 
-.preloader--in {
-  pointer-events: auto;
+/* Returning visitors / reduced motion: never shown (class set by inline script) */
+.intro-skip .preloader {
+  display: none;
 }
 
 .preloader__panel {
@@ -17,7 +19,6 @@
   right: 0;
   height: 50.5%;
   background: var(--charcoal);
-  transition: transform 0.95s cubic-bezier(0.77, 0, 0.18, 1);
 }
 
 .preloader__panel--top {
@@ -28,12 +29,12 @@
   bottom: 0;
 }
 
-.preloader--out .preloader__panel--top {
-  transform: translateY(-100%);
+.preloader__panel--top {
+  animation: pl-top-out 0.95s cubic-bezier(0.77, 0, 0.18, 1) 1.45s forwards;
 }
 
-.preloader--out .preloader__panel--bottom {
-  transform: translateY(100%);
+.preloader__panel--bottom {
+  animation: pl-bottom-out 0.95s cubic-bezier(0.77, 0, 0.18, 1) 1.45s forwards;
 }
 
 .preloader__inner {
@@ -42,14 +43,7 @@
   flex-direction: column;
   align-items: center;
   color: var(--ivory);
-  transition:
-    opacity 0.45s var(--ease),
-    transform 0.6s var(--ease);
-}
-
-.preloader--out .preloader__inner {
-  opacity: 0;
-  transform: scale(0.96);
+  animation: pl-inner-out 0.5s var(--ease) 1.4s forwards;
 }
 
 .preloader__mark {
@@ -137,5 +131,36 @@
 @keyframes pl-line {
   to {
     transform: scaleX(1);
+  }
+}
+
+@keyframes pl-top-out {
+  to {
+    transform: translateY(-100%);
+  }
+}
+
+@keyframes pl-bottom-out {
+  to {
+    transform: translateY(100%);
+  }
+}
+
+@keyframes pl-inner-out {
+  to {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+}
+
+@keyframes pl-release {
+  to {
+    pointer-events: none;
+  }
+}
+
+@keyframes pl-hide {
+  to {
+    visibility: hidden;
   }
 }
